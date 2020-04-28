@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -11,6 +10,32 @@ const UserPage = (props) => (
       Welcome, { props.user.username }!
     </h1>
     <p>Your ID is: {props.user.id}</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Speech Name</th>
+          <th>Date</th>
+          <th>Notes</th>
+          <th>Table Topics</th>
+          <th>Type</th>
+          <th>Time Goal</th>
+          <th>Start</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Self-Dev</td>
+          <td>01/01/2020</td>
+          <td><button>Add Notes</button></td>
+          <td><button>Add Table Topic</button></td>
+          <td>Dropdown here</td>
+          <td>5 to 7 mins</td>
+          <td><button>Start Presentation</button></td>
+          <td>Trash Can here</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 );
 
