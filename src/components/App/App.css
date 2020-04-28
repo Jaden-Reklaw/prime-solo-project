@@ -1,5 +1,9 @@
+html {
+    margin: 0;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Georgia, Verdana, sans-serif;
     margin: 0px;
 }
 
@@ -8,19 +12,73 @@ body {
     margin: 50px;
 }
 
+h5 {
+    margin: 0 auto;
+}
+
+/* Styling for Background Images for Login and Registration Pages */
+.backgroundImageLogin {
+    height: 80vh;
+    background-image: url("https://virtualspeech.com/img/blog/good_posture.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.backgroundImageReg {
+    height: 80vh;
+    background-image: url("https://freakonomics.com/wp-content/uploads/2016/08/PC-waiting--550x372.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Styling For Forms on the pages */
 form {
-    background-color: #dbd5d5;
     width: 30%;
-    height: 250px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 25px;
     border-radius: 2px;
 }
 
-input {
-    margin: 5px;
-    margin-bottom: 10px;
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
+
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
 
 .log-in, .log-out, .register {
   background-color: #00acb0;
@@ -39,11 +97,15 @@ input {
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
     background:none;
-    color:inherit;
+    color:cyan;
     border:none;
     padding:0;
     font: inherit;
-    outline:0;
-    border-bottom:1px solid #444; 
+    outline:0; 
     cursor: pointer;
+}
+
+/* Span coloring is on Login and Registration Page */
+.questionSpan {
+    color: whitesmoke;
 }

@@ -31,7 +31,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="backgroundImageLogin">
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -41,28 +41,26 @@ class LoginPage extends Component {
           </h2>
         )}
         <form onSubmit={this.login}>
-          <h1>Login</h1>
+          <img src="" alt=""/>
+          <h1>Toast Masters</h1>
+          <h5>Account Details</h5>
           <div>
-            <label htmlFor="username">
-              Username:
               <input
                 type="text"
                 name="username"
+                placeholder="Username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
               <input
                 type="password"
                 name="password"
+                placeholder="Password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
           </div>
           <div>
             <input
@@ -74,12 +72,13 @@ class LoginPage extends Component {
           </div>
         </form>
         <center>
+          <span className="questionSpan">Don't Have an account? </span>
           <button
             type="button"
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
           >
-            Register
+            Join Toast Master!
           </button>
         </center>
       </div>
