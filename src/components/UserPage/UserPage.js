@@ -12,7 +12,6 @@ const UserPage = (props) => (
     <p>Your ID is: {props.user.id}</p>
     <table>
       <thead>
-        <tr>
           <th>Speech Name</th>
           <th>Date</th>
           <th>Notes</th>
@@ -21,7 +20,6 @@ const UserPage = (props) => (
           <th>Time Goal</th>
           <th>Start</th>
           <th>Remove</th>
-        </tr>
       </thead>
       <tbody>
         <tr>
@@ -32,7 +30,17 @@ const UserPage = (props) => (
           <td>Dropdown here</td>
           <td>5 to 7 mins</td>
           <td><button>Start Presentation</button></td>
-          <td>Trash Can here</td>
+          <td><button class="btn"><i class="fa fa-trash"></i></button></td>
+        </tr>
+        <tr>
+          <td>Self-Dev</td>
+          <td>01/01/2020</td>
+          <td><button>Add Notes</button></td>
+          <td><button>Add Table Topic</button></td>
+          <td>Dropdown here</td>
+          <td>5 to 7 mins</td>
+          <td><button>Start Presentation</button></td>
+          <td><button class="btn"><i class="fa fa-trash"></i></button></td>
         </tr>
       </tbody>
     </table>
