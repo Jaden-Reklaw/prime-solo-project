@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 class RegisterPage extends Component {
   state = {
     username: '',
+    email: '',
     password: '',
   };
 
@@ -15,6 +16,7 @@ class RegisterPage extends Component {
         type: 'REGISTER',
         payload: {
           username: this.state.username,
+          email: this.state.email,
           password: this.state.password,
         },
       });
@@ -31,7 +33,7 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className='backgroundImageReg'>
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -40,29 +42,35 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
+        <form onSubmit={this.registerUser} className="form-register">
+          <h1>Toast Masters Sign Up</h1>
+          <h5>Account Details</h5>
           <div>
-            <label htmlFor="username">
-              Username:
               <input
                 type="text"
                 name="username"
+                placeholder="Username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.handleInputChangeFor('email')}
+              />
+          </div>
+          <div>
               <input
                 type="password"
                 name="password"
+                placeholder="Password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
           </div>
           <div>
             <input
@@ -74,12 +82,13 @@ class RegisterPage extends Component {
           </div>
         </form>
         <center>
+          <span className="questionSpan">Already have an account? </span>
           <button
             type="button"
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
           >
-            Login
+            Log in
           </button>
         </center>
       </div>
