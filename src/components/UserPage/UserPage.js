@@ -14,6 +14,7 @@ const UserPage = (props) => (
       Welcome, { props.user.username }!
     </h1>
     <p>Your ID is: {props.user.id}</p>
+    <p>Current Speeches: {props.speeches.length}</p>
     </section>
     
     <section>
@@ -39,8 +40,9 @@ const UserPage = (props) => (
 // Instead of taking everything from state, we just want the user info.
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({user}) => ({ user });
-const mapStateToProps = state => ({
-  user: state.user,
+const mapStateToProps = reduxState => ({
+  user: reduxState.user,
+  speeches: reduxState.speeches
 });
 
 // this allows us to use <App /> in index.js

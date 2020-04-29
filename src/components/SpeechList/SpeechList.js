@@ -27,11 +27,16 @@ class SpeechList extends Component {
               <td><button>Add Notes</button></td>
               <td><button>Add Table Topics</button></td>
               <td>
-              <select id="cars">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+              <select id="speech_type">
+                <option value="debate">Debate</option>
+                <option value="demonstrative">Demonstrative</option>
+                <option value="entertaining">Entertaining</option>
+                <option value="informative">Informative</option>
+                <option value="impromptu">Impromptu</option>
+                <option value="motivational">Motivational</option>
+                <option value="passion">Passion</option>
+                <option value="persuasive">Persuasive</option>
+                <option value="special_occasion">Special Occasion</option>
               </select>
               </td>
               <td>{speech.min_time} to {speech.max_time}</td>
