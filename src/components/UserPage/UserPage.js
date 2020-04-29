@@ -32,26 +32,7 @@ const UserPage = (props) => (
         </thead>
         <tbody>
           <SpeechList />
-          <tr>
-            <td>Self-Dev</td>
-            <td>01/01/2020</td>
-            <td><button>Add Notes</button></td>
-            <td><button>Add Table Topic</button></td>
-            <td>Dropdown here</td>
-            <td>5 to 7 mins</td>
-            <td><button>Start Presentation</button></td>
-            <td><button className="btn"><i className="fa fa-trash"></i></button></td>
-          </tr>
-          <tr>
-            <td>Self-Dev</td>
-            <td>01/01/2020</td>
-            <td><button>Add Notes</button></td>
-            <td><button>Add Table Topic</button></td>
-            <td>Dropdown here</td>
-            <td>5 to 7 mins</td>
-            <td><button>Start Presentation</button></td>
-            <td><button className="btn"><i className="fa fa-trash"></i></button></td>
-          </tr>
+          
         </tbody>
       </table>
     </section>
