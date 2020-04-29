@@ -26,14 +26,11 @@ const UserPage = (props) => (
             <th>Table Topics</th>
             <th>Type</th>
             <th>Time Goal</th>
-            <th>Start</th>
+            <th>Present</th>
             <th>Remove</th>
           </tr>
         </thead>
-        <tbody>
-          <SpeechList />
-          
-        </tbody>
+        <SpeechList />
       </table>
     </section>
   </div>

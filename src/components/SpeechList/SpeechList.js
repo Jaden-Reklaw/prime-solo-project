@@ -18,7 +18,29 @@ class SpeechList extends Component {
   render() {
     console.log('redux state',this.props.speeches);
     return (
-      <tr></tr>
+      <tbody>
+        {this.props.speeches.map((speech) => {
+          return(
+            <tr key={speech.id}>
+              <td>{speech.speech_title}</td>
+              <td>{speech.date_created}</td>
+              <td><button>Add Notes</button></td>
+              <td><button>Add Table Topics</button></td>
+              <td>
+              <select id="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+              </select>
+              </td>
+              <td>{speech.min_time} to {speech.max_time}</td>
+              <td><button>Start Presentation</button></td>
+              <td><button><i className="fa fa-trash-o"></i></button></td>
+            </tr>
+          );
+        })}
+      </tbody>
     );
   }
 }
