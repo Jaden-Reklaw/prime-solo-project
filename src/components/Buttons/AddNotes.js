@@ -12,14 +12,6 @@ function AddNotes() {
     setIsOpen(false)
   }
 
-  useEffect(() => {
-    const getClick = document.addEventListener('click', handleClick)
-
-    return () => {
-      getClick()
-    }
-  }, [])
-
   return (
     <div ref={outside}>
       <button onClick={() => setIsOpen(!isOpen)}>Add Notes</button>
@@ -27,10 +19,10 @@ function AddNotes() {
         <div className="modal">
           <div className="modal_content">
             <article>
-            <p>lorem</p>
+                <p>lorem</p>
             </article>
             <button>Save</button>
-            <button onClick={() => setIsOpen(!isOpen)}>Close</button>
+            <button onClick={() => setIsOpen(!isOpen)}>Cancel</button>
           </div>
         </div>
       ) : null}

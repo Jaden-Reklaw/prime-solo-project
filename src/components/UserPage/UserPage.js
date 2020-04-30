@@ -15,6 +15,7 @@ const UserPage = (props) => (
     </h1>
     <p>Your ID is: {props.user.id}</p>
     <p>Current Speeches: {props.speeches.length}</p>
+    <button>Create Speech</button>
     </section>
     
     <section>
