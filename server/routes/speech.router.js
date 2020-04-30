@@ -33,6 +33,7 @@ router.post('/', (req, res) => {
 
 /**
  * PUT route uses UPDATE SQL
+ * NOTES
  */
 router.put('/notes/:id', (req, res) => {
     let notes = req.body.notes;
@@ -43,6 +44,27 @@ router.put('/notes/:id', (req, res) => {
                         SET notes = $1
                         WHERE id = $2;`;
     pool.query(queryText,[notes,speech_id]).then((result) => {
+            res.sendStatus(200);
+        }).catch( (error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
+
+/**
+ * PUT route uses UPDATE SQL
+ * TABLE TOPICS
+ */
+router.put('/table_topic/:id', (req, res) => {
+    let table_topics = req.body.table_topics;
+    let speech_id = req.params.id;
+    console.log('table topic is',req.body);
+
+    const queryText = `
+                        UPDATE speech_info 
+                        SET table_topics = $1
+                        WHERE id = $2;`;
+    pool.query(queryText,[table_topics,speech_id]).then((result) => {
             res.sendStatus(200);
         }).catch( (error) => {
             console.log(`Error on query ${error}`);

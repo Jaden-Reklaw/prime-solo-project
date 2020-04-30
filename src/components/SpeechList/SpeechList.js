@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 //Import other components here
 import AddNotes from '../Buttons/AddNotes';
+import AddTableTopics from '../Buttons/AddTableTopics';
 
 //Get redux store
 const mapStateToProps = reduxState => ({
@@ -28,7 +29,7 @@ class SpeechList extends Component {
               <td>{speech.speech_title}</td>
               <td>{speech.date_created}</td>
               <td><AddNotes notes={speech.notes} speech_id={speech.id}/></td>
-              <td><button onClick={this.handleClick}>Add Table Topics</button></td>
+              <td><AddTableTopics table_topics={speech.table_topics} speech_id={speech.id}/></td>
               <td>
               <select id="speech_type">
                 <option value="debate">Debate</option>

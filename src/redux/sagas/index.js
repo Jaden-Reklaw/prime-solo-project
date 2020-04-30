@@ -6,6 +6,7 @@ import userSaga from './userSaga';
 //My added sagas
 import speechSaga from './speechSaga';
 import addNoteSaga from './addNoteSaga';
+import addTableTopicSaga from './addTableTopicSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     userSaga(),
     speechSaga(),
     addNoteSaga(),
+    addTableTopicSaga(),
   ]);
 }
