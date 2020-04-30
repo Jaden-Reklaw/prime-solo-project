@@ -5,8 +5,8 @@ function AddNotes() {
   const outside = useRef()
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = e => {
-    if (outside.current.contains(e.target)) {
+  const handleClick = (event) => {
+    if (outside.current.contains(event.target)) {
       return
     }
     setIsOpen(false)
@@ -18,8 +18,9 @@ function AddNotes() {
       {isOpen ? (
         <div className="modal">
           <div className="modal_content">
+            <h3>Notes:</h3>
             <article>
-                <p>lorem</p>
+                <textarea>lorem</textarea>
             </article>
             <button>Save</button>
             <button onClick={() => setIsOpen(!isOpen)}>Cancel</button>
