@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 //Connect to the redux store
 import { connect } from 'react-redux';
 
+//Import other components here
+import AddNotes from '../Buttons/AddNotes';
+
 //Get redux store
 const mapStateToProps = reduxState => ({
     user: reduxState.user,
@@ -24,7 +27,7 @@ class SpeechList extends Component {
             <tr key={speech.id}>
               <td>{speech.speech_title}</td>
               <td>{speech.date_created}</td>
-              <td><button>Add Notes</button></td>
+              <td><AddNotes /></td>
               <td><button>Add Table Topics</button></td>
               <td>
               <select id="speech_type">
