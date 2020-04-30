@@ -20,7 +20,10 @@ class AddNotes extends Component {
   }
 
   handleSubmit = () => {
-
+    //Sends a dispatch to update the notes that were added.
+    this.props.dispatch({type: 'PUT_NOTES', payload: {id:this.props.speech_id, notes: this.state.notes}});
+    //Closes the modal once you hit save;
+    this.setIsOpen();
   }
 
   render() {
@@ -33,9 +36,9 @@ class AddNotes extends Component {
               <h2>Notes</h2>
               <hr />
               <article>
-                  <textarea value={this.state.notes} onChange={(event) => this.handleChangeFor(event)}></textarea>
+                  <textarea value={this.state.notes || ''} onChange={(event) => this.handleChangeFor(event)}></textarea>
               </article>
-              <button onClick={}>Save</button>
+              <button onClick={this.handleSubmit}>Save</button>
               <button onClick={() => this.setIsOpen()}>Cancel</button>
             </div>
           </div>
@@ -45,10 +48,5 @@ class AddNotes extends Component {
   }
 }
 
-//Get redux store
-const mapStateToProps = reduxState => ({
-    speeches: reduxState.speeches
-});
 
-
-export default connect(mapStateToProps)(AddNotes);
+export default connect()(AddNotes);
