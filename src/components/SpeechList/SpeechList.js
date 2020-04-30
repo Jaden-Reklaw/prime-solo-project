@@ -18,6 +18,10 @@ class SpeechList extends Component {
       this.props.dispatch({type: 'FETCH_SPEECH', payload: this.props.user.id});
     }
 
+    handleClick = (event) => {
+      console.log('event is', event.target);
+    }
+
   render() {
     console.log('redux state',this.props.speeches);
     return (
@@ -27,8 +31,8 @@ class SpeechList extends Component {
             <tr key={speech.id}>
               <td>{speech.speech_title}</td>
               <td>{speech.date_created}</td>
-              <td><AddNotes /></td>
-              <td><button>Add Table Topics</button></td>
+              <td><AddNotes notes={speech.notes}/></td>
+              <td><button onClick={this.handleClick}>Add Table Topics</button></td>
               <td>
               <select id="speech_type">
                 <option value="debate">Debate</option>
