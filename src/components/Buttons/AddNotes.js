@@ -21,7 +21,7 @@ class AddNotes extends Component {
 
   handleSubmit = () => {
     //Sends a dispatch to update the notes that were added.
-    this.props.dispatch({type: 'PUT_NOTES', payload: {id:this.props.speech_id, notes: this.state.notes}});
+    this.props.dispatch({type: 'PUT_NOTES', payload: {id:this.props.speech_id, notes: this.state.notes, user_id: this.props.user_id}});
     //Closes the modal once you hit save;
     this.setIsOpen();
   }

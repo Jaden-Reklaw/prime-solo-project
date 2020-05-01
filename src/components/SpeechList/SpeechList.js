@@ -28,8 +28,16 @@ class SpeechList extends Component {
             <tr key={speech.id}>
               <td>{speech.speech_title}</td>
               <td>{speech.date_created}</td>
-              <td><AddNotes notes={speech.notes} speech_id={speech.id}/></td>
-              <td><AddTableTopics table_topics={speech.table_topics} speech_id={speech.id}/></td>
+              <td><AddNotes 
+                notes={speech.notes} 
+                speech_id={speech.id}
+                user_id={speech.user_id}/>
+              </td>
+              <td><AddTableTopics 
+                table_topics={speech.table_topics} 
+                speech_id={speech.id}
+                user_id={speech.user_id}/>
+              </td>
               <td>
               <select id="speech_type">
                 <option value="debate">Debate</option>

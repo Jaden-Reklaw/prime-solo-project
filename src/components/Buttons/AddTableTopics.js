@@ -21,7 +21,7 @@ class AddTableTopics extends Component {
 
   handleSubmit = () => {
     //Sends a dispatch to update the notes that were added.
-    this.props.dispatch({type: 'PUT_TABLE_TOPICS', payload: {id:this.props.speech_id, table_topics: this.state.table_topics}});
+    this.props.dispatch({type: 'PUT_TABLE_TOPICS', payload: {id:this.props.speech_id, table_topics: this.state.table_topics, user_id: this.props.user_id}});
     //Closes the modal once you hit save;
     this.setIsOpen();
   }
@@ -33,7 +33,7 @@ class AddTableTopics extends Component {
         {this.state.isOpen ? (
           <div className="modal">
             <div className="modal_content">
-              <h2>Notes</h2>
+              <h2>Table Topics</h2>
               <hr />
               <article>
                   <textarea value={this.state.table_topics || ''} onChange={(event) => this.handleChangeFor(event)}></textarea>

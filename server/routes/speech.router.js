@@ -14,7 +14,7 @@ router.get('/user', (req, res) => {
     // returns all speech associated with the user_id
     const queryText = `
                         SELECT * FROM speech_info 
-                        WHERE user_id = $1
+                        WHERE user_id = $1 AND status = FALSE
                         ORDER BY id;`;
     pool.query(queryText,[user_id]).then((result) => {
             res.send(result.rows);
@@ -58,7 +58,6 @@ router.put('/notes/:id', (req, res) => {
 router.put('/table_topic/:id', (req, res) => {
     let table_topics = req.body.table_topics;
     let speech_id = req.params.id;
-    console.log('table topic is',req.body);
 
     const queryText = `
                         UPDATE speech_info 
