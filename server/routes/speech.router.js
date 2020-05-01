@@ -27,7 +27,22 @@ router.get('/user', (req, res) => {
 /**
  * POST route uses INSERT INTO
  */
-router.post('/', (req, res) => {
+router.post('/new_speech', (req, res) => {
+    const user_id = req.body.user_id;
+    const speech_title = req.body.newSpeech.speech_title;
+    const min_time = req.body.newSpeech.min_time;
+    const max_time = req.body.newSpeech.max_time;
+
+    //Add new speech to the speech_info table
+    const queryText = `
+                        INSERT INTO speech_info(speech_title, user_id, min_time, max_time) VALUES
+                        ($1, $2, $3, $4);`;
+    pool.query(queryText,[speech_title, user_id, min_time, max_time]).then((result) => {
+            res.sendStatus(201);
+        }).catch( (error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
 
 });
 
@@ -39,12 +54,13 @@ router.put('/notes/:id', (req, res) => {
     let notes = req.body.notes;
     let speech_id = req.params.id;
 
+    //Updates the speech_info table on the notes field
     const queryText = `
                         UPDATE speech_info 
                         SET notes = $1
                         WHERE id = $2;`;
     pool.query(queryText,[notes,speech_id]).then((result) => {
-            res.sendStatus(200);
+            res.sendStatus(204);
         }).catch( (error) => {
             console.log(`Error on query ${error}`);
             res.sendStatus(500);
@@ -59,12 +75,13 @@ router.put('/table_topic/:id', (req, res) => {
     let table_topics = req.body.table_topics;
     let speech_id = req.params.id;
 
+    //Updates the speech_info table on the table_topics field
     const queryText = `
                         UPDATE speech_info 
                         SET table_topics = $1
                         WHERE id = $2;`;
     pool.query(queryText,[table_topics,speech_id]).then((result) => {
-            res.sendStatus(200);
+            res.sendStatus(204);
         }).catch( (error) => {
             console.log(`Error on query ${error}`);
             res.sendStatus(500);

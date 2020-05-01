@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 //Import other components
 import SpeechList from '../SpeechList/SpeechList';
+import CreateSpeech from '../Buttons/CreateSpeech';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -15,7 +16,7 @@ const UserPage = (props) => (
     </h1>
     <p>Your ID is: {props.user.id}</p>
     <p>Current Speeches: {props.speeches.length}</p>
-    <button>Create Speech</button>
+    <CreateSpeech user_id={props.user.id}/>
     </section>
     
     <section>
