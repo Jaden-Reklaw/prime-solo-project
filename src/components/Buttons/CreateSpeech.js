@@ -24,7 +24,7 @@ class CreateSpeech extends Component {
   }
 
   handleSubmit = () => {
-    //Sends a dispatch to update the notes that were added.
+    //Sends a dispatch to post a new speech.
     this.props.dispatch({type: 'POST_SPEECH', payload: {newSpeech: this.state.newSpeech, user_id: this.props.user_id}});
 
     //Reset state to empty strings
@@ -33,7 +33,7 @@ class CreateSpeech extends Component {
         min_time: '',
         max_time: '',
     }});
-    
+
     //Closes the modal once you hit save;
     this.setIsOpen();
   }

@@ -47,6 +47,23 @@ router.post('/new_speech', (req, res) => {
 });
 
 /**
+ * DELETE route uses DELETE SQL
+ */
+router.delete('/delete/:id', (req, res) => {
+    let speech_id = req.params.id;
+    console.log('speech id is', speech_id);
+
+    //Deletes a speech from the speech_info table
+    const queryText = `DELETE FROM speech_info WHERE id = $1;`;
+    pool.query(queryText,[speech_id]).then((result) => {
+            res.sendStatus(202);
+        }).catch( (error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
+
+/**
  * PUT route uses UPDATE SQL
  * NOTES
  */

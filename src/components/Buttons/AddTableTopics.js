@@ -20,7 +20,7 @@ class AddTableTopics extends Component {
   }
 
   handleSubmit = () => {
-    //Sends a dispatch to update the notes that were added.
+    //Sends a dispatch to update the table topics that were added.
     this.props.dispatch({type: 'PUT_TABLE_TOPICS', payload: {id:this.props.speech_id, table_topics: this.state.table_topics, user_id: this.props.user_id}});
     //Closes the modal once you hit save;
     this.setIsOpen();
