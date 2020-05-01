@@ -5,6 +5,7 @@ class RegisterPage extends Component {
   state = {
     username: '',
     email: '',
+    first_name: '',
     password: '',
   };
 
@@ -17,6 +18,7 @@ class RegisterPage extends Component {
         payload: {
           username: this.state.username,
           email: this.state.email,
+          first_name: this.state.first_name,
           password: this.state.password,
         },
       });
@@ -61,6 +63,15 @@ class RegisterPage extends Component {
                 placeholder="Email"
                 value={this.state.email}
                 onChange={this.handleInputChangeFor('email')}
+              />
+          </div>
+          <div>
+              <input
+                type="text"
+                name="first_name"
+                placeholder="First Name"
+                value={this.state.first_name}
+                onChange={this.handleInputChangeFor('first_name')}
               />
           </div>
           <div>
