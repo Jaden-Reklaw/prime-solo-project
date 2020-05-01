@@ -9,6 +9,7 @@ import addNoteSaga from './addNoteSaga';
 import addTableTopicSaga from './addTableTopicSaga';
 import addSpeechSaga from './addSpeechSaga';
 import deleteSpeechSaga from './deleteSpeechSaga';
+import changeSpeechTypeSaga from './changeSpeechTypeSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -27,5 +28,6 @@ export default function* rootSaga() {
     addTableTopicSaga(),
     addSpeechSaga(),
     deleteSpeechSaga(),
+    changeSpeechTypeSaga(),
   ]);
 }

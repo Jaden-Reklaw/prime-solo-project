@@ -105,4 +105,25 @@ router.put('/table_topic/:id', (req, res) => {
         });
 });
 
+/**
+ * PUT route uses UPDATE SQL
+ * TABLE TOPICS
+ */
+router.put('/speech_type/:id', (req, res) => {
+    let speech_type = req.body.speech_type;
+    let speech_id = req.params.id;
+
+    //Updates the speech_info table on the table_topics field
+    const queryText = `
+                        UPDATE speech_info 
+                        SET speech_type = $1
+                        WHERE id = $2;`;
+    pool.query(queryText,[speech_type,speech_id]).then((result) => {
+            res.sendStatus(204);
+        }).catch( (error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;

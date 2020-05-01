@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import AddNotes from '../Buttons/AddNotes';
 import AddTableTopics from '../Buttons/AddTableTopics';
 import DeleteSpeech from '../Buttons/DeleteSpeech';
+import SpeechType from '../Buttons/SpeechType';
 
 //Get redux store
 const mapStateToProps = reduxState => ({
@@ -40,17 +41,10 @@ class SpeechList extends Component {
                 user_id={speech.user_id}/>
               </td>
               <td>
-              <select id="speech_type">
-                <option value="debate">Debate</option>
-                <option value="demonstrative">Demonstrative</option>
-                <option value="entertaining">Entertaining</option>
-                <option value="informative">Informative</option>
-                <option value="impromptu">Impromptu</option>
-                <option value="motivational">Motivational</option>
-                <option value="passion">Passion</option>
-                <option value="persuasive">Persuasive</option>
-                <option value="special_occasion">Special Occasion</option>
-              </select>
+                <SpeechType 
+                speech_type={speech.speech_type}
+                speech_id={speech.id}
+                user_id={speech.user_id}/>
               </td>
               <td>{speech.min_time} to {speech.max_time}</td>
               <td><button>Start Presentation</button></td>
