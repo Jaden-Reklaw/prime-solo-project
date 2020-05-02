@@ -4,6 +4,7 @@ const router = express.Router();
 
 /**
  * GET route uses SELECT SQL
+ * all speech specific to one user
  */
 //Route for all the speech sp
 router.get('/user', (req, res) => {
@@ -23,6 +24,30 @@ router.get('/user', (req, res) => {
             res.sendStatus(500);
         });
 });
+
+/**
+ * GET route uses SELECT SQL
+ * all speech specific to one user
+ */
+//Route for all the speech sp
+router.get('/speech', (req, res) => {
+    console.log('query is:',req.query);
+    //query is the user id
+    let speech_id = req.query.q;
+
+    // returns one speech associated with speech_info id
+    const queryText = `
+                        SELECT * FROM speech_info 
+                        WHERE id = $1`;
+    pool.query(queryText,[speech_id]).then((result) => {
+            res.send(result.rows[0]);
+        }).catch( (error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
+
+
 
 /**
  * POST route uses INSERT INTO
@@ -98,6 +123,27 @@ router.put('/table_topic/:id', (req, res) => {
                         SET table_topics = $1
                         WHERE id = $2;`;
     pool.query(queryText,[table_topics,speech_id]).then((result) => {
+            res.sendStatus(204);
+        }).catch( (error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
+
+/**
+ * PUT route uses UPDATE SQL
+ * TABLE TOPICS
+ */
+router.put('/speech_type/:id', (req, res) => {
+    let speech_type = req.body.speech_type;
+    let speech_id = req.params.id;
+
+    //Updates the speech_info table on the table_topics field
+    const queryText = `
+                        UPDATE speech_info 
+                        SET speech_type = $1
+                        WHERE id = $2;`;
+    pool.query(queryText,[speech_type,speech_id]).then((result) => {
             res.sendStatus(204);
         }).catch( (error) => {
             console.log(`Error on query ${error}`);

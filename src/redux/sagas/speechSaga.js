@@ -13,8 +13,22 @@ function* fetchSpeechSaga(action){
     }
 }
 
+//Generator function that uses saga to ajax get request
+function* fetchOneSpeechSaga(action){
+    try {
+        //Making asyn AJAX (axios) request
+        const response = yield axios.get(`/api/speech/speech?q=${action.payload}`);
+        //Once that is back successfully, dispatch action to the reducer
+        console.log(response.data);
+        yield put({ type: 'SET_SPEECH', payload: response.data});
+    } catch(error) {
+        console.log('error with movie get request', error);
+    }
+}
+
 function* speechSaga() {
     yield takeLatest('FETCH_SPEECH', fetchSpeechSaga);
+    yield takeLatest('FETCH_SPEECH_BY_ID', fetchOneSpeechSaga);
 }
 
 export default speechSaga;

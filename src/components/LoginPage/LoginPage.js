@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+//Import Individual Components to use on this page;
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
+
 class LoginPage extends Component {
   state = {
     username: '',
@@ -32,6 +36,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="backgroundImageLogin">
+        <Nav />
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -81,6 +86,7 @@ class LoginPage extends Component {
             Join Toast Master!
           </button>
         </center>
+        <Footer />
       </div>
     );
   }

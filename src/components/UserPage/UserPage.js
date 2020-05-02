@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-//Import other components
+//Import Individual Components to use on this page;
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 import SpeechList from '../SpeechList/SpeechList';
 import CreateSpeech from '../Buttons/CreateSpeech';
 
@@ -10,6 +12,7 @@ import CreateSpeech from '../Buttons/CreateSpeech';
 // and then instead of `props.user.username` you could use `user.username`
 const UserPage = (props) => (
   <div>
+    <Nav />
     <section>
     <h1 id="welcome">
       Welcome, { props.user.username }!
@@ -36,6 +39,7 @@ const UserPage = (props) => (
         <SpeechList />
       </table>
     </section>
+    <Footer />
   </div>
 );
 

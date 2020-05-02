@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+//Import Individual Components to use on this page;
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
+
 class RegisterPage extends Component {
   state = {
     username: '',
@@ -36,6 +40,7 @@ class RegisterPage extends Component {
   render() {
     return (
       <div className='backgroundImageReg'>
+        <Nav />
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -102,6 +107,7 @@ class RegisterPage extends Component {
             Log in
           </button>
         </center>
+        <Footer />
       </div>
     );
   }
