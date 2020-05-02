@@ -24,8 +24,8 @@ class SpeechList extends Component {
       this.props.dispatch({type: 'FETCH_SPEECH', payload: this.props.user.id});
     }
 
-    handleClick = (event, speech_id) => {
-      this.props.history.push(`/presentation`);
+    handleClick = (speech_id) => {
+      this.props.history.push(`/presentation?q=${speech_id}`);
     }
 
   render() {
