@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../Nav/Nav';
 
 class LoginPage extends Component {
   state = {
@@ -32,6 +33,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="backgroundImageLogin">
+        <Nav />
         {this.props.errors.loginMessage && (
           <h2
             className="alert"

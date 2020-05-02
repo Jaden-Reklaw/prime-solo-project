@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import Nav from '../Nav/Nav';
 
 class RegisterPage extends Component {
   state = {
@@ -36,6 +37,7 @@ class RegisterPage extends Component {
   render() {
     return (
       <div className='backgroundImageReg'>
+        <Nav />
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
