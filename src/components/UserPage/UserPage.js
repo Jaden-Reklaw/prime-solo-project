@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-//Import other components
+//Import Individual Components to use on this page;
 import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 import SpeechList from '../SpeechList/SpeechList';
 import CreateSpeech from '../Buttons/CreateSpeech';
 
@@ -38,6 +39,7 @@ const UserPage = (props) => (
         <SpeechList />
       </table>
     </section>
+    <Footer />
   </div>
 );
 

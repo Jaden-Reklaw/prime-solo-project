@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+
+//Import Individual Components to use on this page;
 import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 
 class RegisterPage extends Component {
   state = {
@@ -104,6 +107,7 @@ class RegisterPage extends Component {
             Log in
           </button>
         </center>
+        <Footer />
       </div>
     );
   }

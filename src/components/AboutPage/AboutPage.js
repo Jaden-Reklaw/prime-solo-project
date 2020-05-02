@@ -1,5 +1,8 @@
 import React from 'react';
+
+//Import Individual Components to use on this page;
 import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -14,6 +17,7 @@ const AboutPage = () => (
         This about page is for anyone to read!
       </p>
     </div>
+    <Footer />
   </div>
 );
 
