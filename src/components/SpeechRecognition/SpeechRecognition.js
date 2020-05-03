@@ -1,35 +1,47 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+
+//Connect to the redux store
+import { connect } from 'react-redux';
+
+//used to help change pages
+import { withRouter } from 'react-router-dom';
+
 import SpeechRecognition from "react-speech-recognition";
-
-//Import components to be used on this page
-import SpeechContent from '../SpeechContent/SpeechContent';
-
-const propTypes = {
-  // Props injected by SpeechRecognition
-  transcript: PropTypes.string,
-  resetTranscript: PropTypes.func,
-  browserSupportsSpeechRecognition: PropTypes.bool
-};
-
-const Dictaphone = ({transcript,browserSupportsSpeechRecognition, stopListening, startListening}) => {
-  if (!browserSupportsSpeechRecognition) {
-    return null;
+class Dictaphone extends Component {
+  updateTranscriptState = () => {
+    this.props.dispatch({type: 'SET_SPEECH_TEXT', payload: {speech_text: this.props.transcript}});
   }
 
-  return (
-    <div>
-      <button onClick={startListening}>Start Recording <i className="fa fa-microphone" aria-hidden="true"></i></button>
-      <button onClick={stopListening}>Stop Recording <i className="fa fa-stop" aria-hidden="true"></i></button>
-      <SpeechContent content={transcript}/>
-    </div>
-  );
+  //Method to go back to user's home screen
+  stopPresenting = () => {
+    this.props.dispatch({type: 'SET_SPEECH_TEXT', payload: {speech_text: ''}});
+    this.props.history.push(`/`);
+  } 
+
+  render() {
+    return (
+      <div>
+        <button onClick={() => {
+          this.props.stopListening();
+          this.props.resetTranscript(); 
+          this.stopPresenting();}}>
+            Cancel Speech
+        </button>
+        <button onClick={() => {
+          this.props.stopListening(); 
+          this.updateTranscriptState();}}>
+            Submit Speech Content
+        </button>
+        <button onClick={this.props.stopListening}>Pause</button>
+        <button onClick={this.props.startListening}>Start</button>
+        <span>{this.props.transcript}</span>
+      </div>
+    );
+  }
 };
 
-Dictaphone.propTypes = propTypes;
-
 const options = {
-    autoStart: false
+  autoStart: false
 }
 
-export default SpeechRecognition(options)(Dictaphone);
+export default SpeechRecognition(options)(withRouter(connect()(Dictaphone)));

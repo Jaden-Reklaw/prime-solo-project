@@ -52,7 +52,6 @@ class PresentationPage extends Component {
                     </div>
                 </section>
                 <button onClick={this.stopPresenting}>Cancel Speech</button>
-                <button onClick={this.submitSpeech}>Submit Speech</button>
             </div>
         );
     }
