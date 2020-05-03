@@ -36,7 +36,10 @@ class AddNotes extends Component {
               <h2>Notes</h2>
               <hr />
               <article>
-                  <textarea value={this.state.notes || ''} onChange={(event) => this.handleChangeFor(event)}></textarea>
+                  <textarea 
+                  spellCheck="true"
+                  value={this.state.notes || ''} 
+                  onChange={(event) => this.handleChangeFor(event)}></textarea>
               </article>
               <button onClick={this.handleSubmit}>Save</button>
               <button onClick={() => this.setIsOpen()}>Cancel</button>

@@ -36,7 +36,10 @@ class AddTableTopics extends Component {
               <h2>Table Topics</h2>
               <hr />
               <article>
-                  <textarea value={this.state.table_topics || ''} onChange={(event) => this.handleChangeFor(event)}></textarea>
+                  <textarea 
+                  spellCheck="true"
+                  value={this.state.table_topics || ''} 
+                  onChange={(event) => this.handleChangeFor(event)}></textarea>
               </article>
               <button onClick={this.handleSubmit}>Save</button>
               <button onClick={() => this.setIsOpen()}>Cancel</button>
