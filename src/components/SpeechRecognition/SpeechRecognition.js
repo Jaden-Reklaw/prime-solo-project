@@ -21,18 +21,32 @@ class Dictaphone extends Component {
   render() {
     return (
       <div>
+        {/* 
+          Stops the microphone from recording
+          reset the transcript from the api
+          goes back to home screen
+        */}
         <button onClick={() => {
           this.props.stopListening();
           this.props.resetTranscript(); 
           this.stopPresenting();}}>
             Cancel Speech
         </button>
+
+        {/* 
+          Stops the microphone from recording
+          sends the transcript into redux state
+        */}
         <button onClick={() => {
           this.props.stopListening(); 
           this.updateTranscriptState();}}>
             Submit Speech Content
         </button>
+        
+        {/* Stops the recording but does not reset transcript */}
         <button onClick={this.props.stopListening}>Pause</button>
+
+        
         <button onClick={this.props.startListening}>Start</button>
         <span>{this.props.transcript}</span>
       </div>

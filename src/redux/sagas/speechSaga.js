@@ -19,7 +19,6 @@ function* fetchOneSpeechSaga(action){
         //Making asyn AJAX (axios) request
         const response = yield axios.get(`/api/speech/speech?q=${action.payload}`);
         //Once that is back successfully, dispatch action to the reducer
-        console.log(response.data);
         yield put({ type: 'SET_SPEECH', payload: response.data});
     } catch(error) {
         console.log('error with movie get request', error);
