@@ -10,18 +10,28 @@ class WordCounter extends Component {
         ands: 0
     }
 
-    componentDidUpdate() {
-        this.updateLike();
+    //How to fix the issue if you get the infinite loop issue
+    //with setting state
+    componentDidUpdate(prevProps) {
+        if(this.props.speechText !== prevProps.speechText) {
+            this.updateLike();
+            this.updateAnd();
+        } 
     }
 
     updateLike = () => {
-        console.log('speechText is',this.props.speechText);
         if(typeof this.props.speechText === 'string') {
             const words = this.props.speechText.split(' ');
-            console.log('Words are', words);
             let count = words.filter((word) => word === 'like');
-            console.log('Number of times you said like', count.length);
-            //this.setState({likes: count.length});
+            this.setState({likes: count.length});
+        }
+    }
+
+    updateAnd = () => {
+        if(typeof this.props.speechText === 'string') {
+            const words = this.props.speechText.split(' ');
+            let count = words.filter((word) => word === 'and');
+            this.setState({ands: count.length});
         }
     }
 

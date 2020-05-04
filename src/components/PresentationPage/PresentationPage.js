@@ -35,7 +35,9 @@ class PresentationPage extends Component {
                 <section className="container">
                     <div>
                         <h3>Like and And counter here</h3>
-                        <WordCounter />
+                        <Scroll>
+                            <WordCounter />
+                        </Scroll>
                     </div>
                     <div>
                         <h3>What you say will be recorded here.</h3>
