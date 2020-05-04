@@ -5,7 +5,8 @@ import user from './userReducer';
 
 //My added reducers
 import speeches from './speechReducer';
-import oneSpeechReducer from './oneSpeechReducer';
+import speech from './oneSpeechReducer';
+import speechText from './speechTextReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
   speeches,
-  oneSpeechReducer,
+  speech,
+  speechText,
 });
 
 export default rootReducer;

@@ -35,7 +35,7 @@ class SpeechList extends Component {
           return(
             <tr key={speech.id}>
               <td>{speech.speech_title}</td>
-              <td>{speech.date_created}</td>
+              <td>{speech.date_created.replace('T05:00:00.000Z', '')}</td>
               <td><AddNotes 
                 notes={speech.notes} 
                 speech_id={speech.id}
