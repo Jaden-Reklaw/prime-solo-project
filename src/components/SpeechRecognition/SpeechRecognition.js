@@ -51,7 +51,7 @@ class Dictaphone extends Component {
           this.props.stopListening();
           clearInterval(this.timeout); 
           this.updateTranscriptState();}}>
-            Submit Speech Content <i class="fa fa-list" aria-hidden="true"></i>
+            Submit Speech Content <i className="fa fa-list" aria-hidden="true"></i>
         </button>
 
         {/* 
