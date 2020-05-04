@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 //import specific components that work on this page
 import SpeechRecognition from '../SpeechRecognition/SpeechRecognition';
 import Scroll from '../Scroll/Scroll';
+import WordCounter from '../WordCounter/WordCounter';
 
 //import styles
 import './PresentationPage.css';
@@ -34,7 +35,7 @@ class PresentationPage extends Component {
                 <section className="container">
                     <div>
                         <h3>Like and And counter here</h3>
-                        
+                        <WordCounter />
                     </div>
                     <div>
                         <h3>What you say will be recorded here.</h3>
