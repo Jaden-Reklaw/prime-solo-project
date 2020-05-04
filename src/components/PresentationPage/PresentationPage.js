@@ -33,6 +33,7 @@ class PresentationPage extends Component {
                 <section className="container">
                     <div>
                         <h3>Like and And counter here</h3>
+                        <pre>{this.props.speech.table_topics}</pre>
                     </div>
                     <div>
                         <h3>What you say will be recorded here.</h3>
