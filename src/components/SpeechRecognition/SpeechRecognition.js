@@ -61,7 +61,7 @@ class Dictaphone extends Component {
     //Start the microphone
     this.props.startListening();
     //Start the updating the transcript to redux state
-    this.timeout = setInterval(() => {this.updateTranscriptState();}, 5000);
+    this.timeout = setInterval(() => {this.updateTranscriptState();}, 1000);
   }
 
   //Click event for when the speech is paused
@@ -84,6 +84,8 @@ class Dictaphone extends Component {
     clearInterval(this.timeout);
     //Update the transcript before submitting and going to review page
     this.updateTranscriptState();
+    //Send time to redux state to be used on review page
+    this.props.dispatch({type: 'SET_TIME', payload: {time: this.state.secondsElapsed}});
   }
 
   //Click event for when the speech is canceled
