@@ -58,7 +58,7 @@ class Dictaphone extends Component {
     //Stop the timer 
     this.handleStopClick();
     //Stop the microphone when paused but keep the transcript
-    this.props.stopListening();
+    setTimeout(() => {this.props.stopListening(); }, 1000);
     //Clear the setInterval so it does not keep running when paused
     clearInterval(this.timeout);
   }
@@ -84,11 +84,11 @@ class Dictaphone extends Component {
     //Update the transcript before submitting and going to review page
     this.updateTranscriptState();
     //Reset the transcript back to empty string
-   this.props.resetTranscript();
+    this.props.resetTranscript();
     //Send time to redux state to be used on review page
     this.props.dispatch({type: 'SET_TIME', payload: {time: this.state.secondsElapsed}});
-    //Go to the review page
-    this.props.history.push(`/review`);
+    //Go to the review page need setTimeout to not get memory leak error ???
+    setTimeout(() => {this.props.history.push(`/review`); }, 1500);
   }
 
   //Click event for when the speech is canceled
