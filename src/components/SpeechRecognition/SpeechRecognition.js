@@ -13,7 +13,35 @@ import SpeechRecognition from "react-speech-recognition";
 import Scroll from '../Scroll/Scroll';
 
 class Dictaphone extends Component {
+  state = {
+      secondsElapsed: 0
+  }
   timeout = 0;
+
+  //Stopwatch Functions
+  getSeconds = () => {
+      return ('0' + this.state.secondsElapsed % 60).slice(-2);
+  }
+
+  getMinutes = () => {
+      return Math.floor(this.state.secondsElapsed / 60);
+  }
+
+  handleStartClick = () => {
+      let _this = this;
+
+      this.incrementer =  setInterval(function() {
+          _this.setState({
+              secondsElapsed: (_this.state.secondsElapsed + 1),
+          });
+      }, 1000);
+  }
+
+  //funciton to clear the timer
+  handleStopClick = () => {
+      clearInterval(this.incrementer);
+  }
+
   //Method for sending the transcript of recorded text into redux state
   updateTranscriptState = () => {
     this.props.dispatch({type: 'SET_SPEECH_TEXT', payload: {speech_text: this.props.transcript}});
@@ -28,6 +56,8 @@ class Dictaphone extends Component {
 
   //Click event for when the record button is pushed
   handleRecordClick = () => {
+    //Start the timer
+    this.handleStartClick();
     //Start the microphone
     this.props.startListening();
     //Start the updating the transcript to redux state
@@ -36,6 +66,8 @@ class Dictaphone extends Component {
 
   //Click event for when the speech is paused
   handlePauseClick = () => {
+    //Stop the timer
+    this.handleStopClick();
     //Stop the microphone when paused but keep the transcript
     this.props.stopListening();
     //Clear the setInterval so it does not keep running when paused
@@ -44,6 +76,8 @@ class Dictaphone extends Component {
 
   //Click event for when the speech is submitted and finished
   handleSubmitTranscriptClick = () => {
+    //Stop the timer 
+    this.handleStopClick();
     //Stop the microphone when paused but keep the transcript
     this.props.stopListening();
     //Clear the setInterval so it does not keep running when paused
@@ -54,6 +88,8 @@ class Dictaphone extends Component {
 
   //Click event for when the speech is canceled
   handleCancelSpeechClick = () => {
+    //Stop the timer
+    this.handleStopClick();
     //Stop the microphone when paused but keep the transcript
     this.props.stopListening();
     //Clear the setInterval so it does not keep running when paused
@@ -71,6 +107,7 @@ class Dictaphone extends Component {
         <div className='top-heading'>
 
           <h3>Speech Controls</h3>
+          <h5>{this.getMinutes()}:{this.getSeconds()}</h5>
           <button onClick={this.handleRecordClick}>
               Record <i className="fa fa-microphone" aria-hidden="true"></i>
           </button>
@@ -86,7 +123,7 @@ class Dictaphone extends Component {
           <button onClick={this.handleCancelSpeechClick}>
               Cancel Speech <i className="fa fa-times-circle" aria-hidden="true"></i>
           </button>
-          
+
         </div>
         <Scroll>
           <span>{this.props.transcript}</span>

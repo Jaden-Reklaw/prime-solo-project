@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import SpeechRecognition from '../SpeechRecognition/SpeechRecognition';
 import Scroll from '../Scroll/Scroll';
 import WordCounter from '../WordCounter/WordCounter';
-import Stopwatch from '../Stopwatch/Stopwatch';
 
 //import styles
 import './PresentationPage.css';
@@ -33,7 +32,6 @@ class PresentationPage extends Component {
         return (
             <div>
                 <h1>Presentation Page</h1>
-                <Stopwatch />
                 <section className="container">
                     <div>
                         <div className='top-heading'>
