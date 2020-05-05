@@ -137,3 +137,9 @@ th {
 tr:nth-child(odd) {
     background-color: grey;
 }
+
+/* Top part of the Presentation Page outside of Scrolls */
+.top-heading {
+    height: 10vh;
+    text-align: center;
+}

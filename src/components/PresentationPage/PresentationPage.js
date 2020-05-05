@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import SpeechRecognition from '../SpeechRecognition/SpeechRecognition';
 import Scroll from '../Scroll/Scroll';
 import WordCounter from '../WordCounter/WordCounter';
+import Stopwatch from '../Stopwatch/Stopwatch';
 
 //import styles
 import './PresentationPage.css';
@@ -32,19 +33,23 @@ class PresentationPage extends Component {
         return (
             <div>
                 <h1>Presentation Page</h1>
+                <Stopwatch />
                 <section className="container">
                     <div>
-                        <h3>Like and And counter here</h3>
+                        <div className='top-heading'>
+                            <h3>Like and And counter here</h3>
+                        </div>
                         <Scroll>
                             <WordCounter />
                         </Scroll>
                     </div>
                     <div>
-                        <h3>What you say will be recorded here.</h3>
                         <SpeechRecognition />
                     </div>
                     <div>
-                        <h3>Speech Notes:</h3>
+                        <div className='top-heading'>
+                            <h3>Speech Notes:</h3>
+                        </div>
                         <Scroll>
                             <pre>{this.props.speech.notes}</pre>
                         </Scroll>
