@@ -52,7 +52,16 @@ class Dictaphone extends Component {
   stopPresenting = () => {
     this.props.dispatch({type: 'SET_SPEECH_TEXT', payload: {speech_text: ''}});
     this.props.history.push(`/`);
-  } 
+  }
+  
+  stopEvent = () => {
+    //Stop the timer 
+    this.handleStopClick();
+    //Stop the microphone when paused but keep the transcript
+    this.props.stopListening();
+    //Clear the setInterval so it does not keep running when paused
+    clearInterval(this.timeout);
+  }
 
   //Click event for when the record button is pushed
   handleRecordClick = () => {
@@ -66,40 +75,28 @@ class Dictaphone extends Component {
 
   //Click event for when the speech is paused
   handlePauseClick = () => {
-    //Stop the timer
-    this.handleStopClick();
-    //Stop the microphone when paused but keep the transcript
-    this.props.stopListening();
-    //Clear the setInterval so it does not keep running when paused
-    clearInterval(this.timeout);
+    this.stopEvent();
   }
 
   //Click event for when the speech is submitted and finished
   handleSubmitTranscriptClick = () => {
-    //Stop the timer 
-    this.handleStopClick();
-    //Stop the microphone when paused but keep the transcript
-    this.props.stopListening();
-    //Clear the setInterval so it does not keep running when paused
-    clearInterval(this.timeout);
+    this.stopEvent();
     //Update the transcript before submitting and going to review page
     this.updateTranscriptState();
+    //Reset the transcript back to empty string
+   this.props.resetTranscript();
     //Send time to redux state to be used on review page
     this.props.dispatch({type: 'SET_TIME', payload: {time: this.state.secondsElapsed}});
+    //Go to the review page
+    this.props.history.push(`/review`);
   }
 
   //Click event for when the speech is canceled
   handleCancelSpeechClick = () => {
-    //Stop the timer
-    this.handleStopClick();
-    //Stop the microphone when paused but keep the transcript
-    this.props.stopListening();
-    //Clear the setInterval so it does not keep running when paused
-    clearInterval(this.timeout);
+    this.stopEvent();
     //Reset the transcript back to empty string
     setTimeout(() => {this.props.resetTranscript(); }, 1500);
-    //Reset redux state for transcript back to empty and go back
-    //to user's home page
+    //Reset redux state for transcript back to empty and go back to user's home page
     setTimeout(() => {this.stopPresenting(); }, 1500);
   }
 
@@ -109,7 +106,7 @@ class Dictaphone extends Component {
         <div className='top-heading'>
 
           <h3>Speech Controls</h3>
-          <h5>{this.getMinutes()}:{this.getSeconds()}</h5>
+          <h4 className="timer">{this.getMinutes()}:{this.getSeconds()}</h4>
           <button onClick={this.handleRecordClick}>
               Record <i className="fa fa-microphone" aria-hidden="true"></i>
           </button>

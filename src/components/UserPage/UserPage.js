@@ -23,7 +23,7 @@ const UserPage = (props) => (
     </section>
     
     <section>
-      <table>
+      <table className="home-table">
         <thead>
           <tr>
             <th>Speech Name</th>

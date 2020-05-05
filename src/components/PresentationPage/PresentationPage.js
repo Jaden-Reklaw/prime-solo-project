@@ -31,7 +31,8 @@ class PresentationPage extends Component {
     render() {
         return (
             <div>
-                <h1>Presentation Page</h1>
+                <h1>Presentater: {this.props.user.first_name}</h1>
+                <h2>Title: {this.props.speech.speech_title}</h2>
                 <section className="container">
                     <div>
                         <div className='top-heading'>
@@ -59,7 +60,8 @@ class PresentationPage extends Component {
 }
 
 const mapStateToProps = reduxState => ({
-    speech: reduxState.speech
+    speech: reduxState.speech,
+    user: reduxState.user
   });
   
   export default connect(mapStateToProps)(PresentationPage);
