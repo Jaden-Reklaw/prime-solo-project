@@ -18,15 +18,18 @@ class Dictaphone extends Component {
   }
   timeout = 0;
 
-  //Stopwatch Functions
+  //Stopwatch Methods
+  //Method to get seconds on DOM
   getSeconds = () => {
       return ('0' + this.state.secondsElapsed % 60).slice(-2);
   }
 
+  //Method to get minutes on the DOM
   getMinutes = () => {
       return Math.floor(this.state.secondsElapsed / 60);
   }
 
+  //Method to start the timer and set it to state
   handleStartClick = () => {
       let _this = this;
 
@@ -37,7 +40,7 @@ class Dictaphone extends Component {
       }, 1000);
   }
 
-  //funciton to clear the timer
+  //Method to clear the timer interval
   handleStopClick = () => {
       clearInterval(this.incrementer);
   }

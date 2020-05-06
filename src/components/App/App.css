@@ -87,8 +87,6 @@ input[type=submit]:hover {
     background-color: #008183;
 }
 
-
-
 .log-in, .log-out, .register {
   background-color: #00acb0;
   border-radius: 4px;
@@ -138,13 +136,3 @@ tr:nth-child(odd) {
     background-color: grey;
 }
 
-/* Top part of the Presentation Page outside of Scrolls */
-.top-heading {
-    height: 10vh;
-    text-align: center;
-}
-
-/* Timer on SpeechRecognition Component position */
-.timer {
-    margin: 0 auto;
-}

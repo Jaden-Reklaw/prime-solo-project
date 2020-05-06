@@ -30,10 +30,10 @@ class PresentationPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="presentation-page">
                 <h1>Presentater: {this.props.user.first_name}</h1>
                 <h2>Title: {this.props.speech.speech_title}</h2>
-                <section className="container">
+                <section className="presentation-wrapper">
                     <div>
                         <div className='top-heading'>
                             <h3>Like and And counter here</h3>
