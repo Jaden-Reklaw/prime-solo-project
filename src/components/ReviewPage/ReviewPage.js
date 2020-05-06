@@ -32,6 +32,11 @@ class HistoryPage extends Component {
         const max_time = this.props.speech.max_time * 60;
         console.log('min time in seconds', min_time);
         console.log('max time in seconds', max_time);
+        if(this.props.time < min_time || this.props.time > max_time){
+            return <span> No</span>;
+        } else {
+            return <span> Yes</span>
+        }
 
     }
     render () {
@@ -67,6 +72,7 @@ class HistoryPage extends Component {
                         <section className="review-section">
                             <h2>Speech Run Time</h2>
                             <h4>Min:Sec = {this.getMinutes()}:{this.getSeconds()}</h4>
+                            <h4>Completed In Time: {this.completedInTime()}</h4>
                         </section>
                         <section className="review-section">
                             <h2>Speech Type</h2>
