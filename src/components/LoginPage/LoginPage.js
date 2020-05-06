@@ -47,7 +47,7 @@ class LoginPage extends Component {
         )}
         <form onSubmit={this.login}>
           <img src="" alt=""/>
-          <h1>Toast Masters</h1>
+          <h1>Speech2Me</h1>
           <h5>Account Details</h5>
           <div>
               <input
@@ -83,7 +83,7 @@ class LoginPage extends Component {
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
           >
-            Join Toast Master!
+            Join Speech2Me!
           </button>
         </center>
         <Footer />

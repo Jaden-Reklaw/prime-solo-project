@@ -30,21 +30,25 @@ class PresentationPage extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Presentation Page</h1>
-                <section className="container">
+            <div className="presentation-page">
+                <h1>Presentater: {this.props.user.first_name}</h1>
+                <h2>Title: {this.props.speech.speech_title}</h2>
+                <section className="presentation-wrapper">
                     <div>
-                        <h3>Like and And counter here</h3>
+                        <div className='top-heading'>
+                            <h3>Like and And counter here</h3>
+                        </div>
                         <Scroll>
                             <WordCounter />
                         </Scroll>
                     </div>
                     <div>
-                        <h3>What you say will be recorded here.</h3>
                         <SpeechRecognition />
                     </div>
                     <div>
-                        <h3>Speech Notes:</h3>
+                        <div className='top-heading'>
+                            <h3>Speech Notes:</h3>
+                        </div>
                         <Scroll>
                             <pre>{this.props.speech.notes}</pre>
                         </Scroll>
@@ -56,7 +60,8 @@ class PresentationPage extends Component {
 }
 
 const mapStateToProps = reduxState => ({
-    speech: reduxState.speech
+    speech: reduxState.speech,
+    user: reduxState.user
   });
   
   export default connect(mapStateToProps)(PresentationPage);

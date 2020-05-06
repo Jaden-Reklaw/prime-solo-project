@@ -50,7 +50,7 @@ class RegisterPage extends Component {
           </h2>
         )}
         <form onSubmit={this.registerUser} className="form-register">
-          <h1>Toast Masters Sign Up</h1>
+          <h1>Speech2Me Sign Up</h1>
           <h5>Account Details</h5>
           <div>
               <input

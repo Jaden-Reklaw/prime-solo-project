@@ -1,5 +1,21 @@
-.container {
+.presentation-page {
+    text-align: center;
+    margin: 12px;
+}
+
+.presentation-wrapper {
     display: grid;
     grid-template-columns: 33.3% 33.3% auto;
-    grid-template-rows: 22% auto 22%;
+}
+
+/* Top part of the Presentation Page outside of Scrolls */
+.top-heading {
+    height: 12vh;
+    text-align: center;
+    background-color: #006368;
+}
+
+/* Timer on SpeechRecognition Component position */
+.timer {
+    margin: 0 auto;
 }

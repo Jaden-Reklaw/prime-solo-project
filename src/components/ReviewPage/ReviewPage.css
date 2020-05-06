@@ -1,0 +1,18 @@
+.review-page {
+    text-align: center;
+    margin: 12px;
+}
+
+.review-page h2 {
+    background-color: #006368;
+    margin: 0 auto;
+}
+
+.review-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.review-section {
+    border: 1px solid black;
+}

@@ -16,6 +16,7 @@ class WordCounter extends Component {
         if(this.props.speechText !== prevProps.speechText) {
             this.updateLike();
             this.updateAnd();
+            this.props.dispatch({type: 'SET_WORD_COUNTS', payload: this.state});
         } 
     }
 
