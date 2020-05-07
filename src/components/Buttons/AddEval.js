@@ -21,7 +21,7 @@ class AddEval extends Component {
 
   handleSubmit = () => {
     //Sends a dispatch to update the speech_eval that were added.
-    this.props.dispatch({type: 'SET_EVAL', payload: {id:this.props.speech_id, speech_eval: this.state.speech_eval, user_id: this.props.user_id}});
+    this.props.dispatch({type: 'PUT_EVAL', payload: {id:this.props.speech_id, speech_eval: this.state.speech_eval, user_id: this.props.user_id}});
     //Closes the modal once you hit save;
     this.setIsOpen();
   }

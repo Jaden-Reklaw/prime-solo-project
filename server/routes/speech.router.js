@@ -132,7 +132,7 @@ router.put('/table_topic/:id', (req, res) => {
 
 /**
  * PUT route uses UPDATE SQL
- * TABLE TOPICS
+ * SPEECH TYPE
  */
 router.put('/speech_type/:id', (req, res) => {
     let speech_type = req.body.speech_type;
@@ -144,6 +144,29 @@ router.put('/speech_type/:id', (req, res) => {
                         SET speech_type = $1
                         WHERE id = $2;`;
     pool.query(queryText,[speech_type,speech_id]).then((result) => {
+            res.sendStatus(204);
+        }).catch( (error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
+
+/**
+ * PUT route uses UPDATE SQL
+ * TABLE TOPICS
+ */
+router.put('/eval/:id', (req, res) => {
+    
+    let eval = req.body.speech_eval;
+    let speech_id = req.params.id;
+    console.log('in update for eval', eval, speech_id);
+
+    //Updates the speech_info table on the table_topics field
+    const queryText = `
+                        UPDATE speech_info 
+                        SET speech_eval = $1
+                        WHERE id = $2;`;
+    pool.query(queryText,[eval,speech_id]).then((result) => {
             res.sendStatus(204);
         }).catch( (error) => {
             console.log(`Error on query ${error}`);
