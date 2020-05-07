@@ -14,10 +14,7 @@ const UserPage = (props) => (
   <div>
     <Nav />
     <section>
-    <h1 id="welcome">
-      Welcome, { props.user.username }!
-    </h1>
-    <p>Your ID is: {props.user.id}</p>
+    <h1 id="welcome">Welcome, { props.user.username }!</h1>
     <p>Current Speeches: {props.speeches.length}</p>
     <CreateSpeech user_id={props.user.id}/>
     </section>
