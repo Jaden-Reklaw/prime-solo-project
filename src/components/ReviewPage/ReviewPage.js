@@ -49,6 +49,7 @@ class HistoryPage extends Component {
         }
     }
 
+    //Conditional Render for if the speech finished at the right time
     renderYayOrNay = () => {
         if(this.state.in_time === true) {
             return <span> Yes</span>
@@ -57,8 +58,26 @@ class HistoryPage extends Component {
         }
     }
 
+    //Event Listener for what to do if the user clicks on the reset speech button
     resetSpeech = () => {
         this.props.dispatch({type: 'SET_SPEECH_TEXT', payload: {speech_text: ''}});
+        this.props.history.push(`/`);
+    }
+
+    endReview = () => {
+        //Things that need to be added
+        //Speech Run Time, Speech Text, ands and likes count
+        //in_time and make status from false to true
+        this.props.dispatch({type: 'PUT_SPEECH_REVIEW', payload: {
+            speech_id: this.props.speech.id,
+            speech_rt: this.props.time,
+            speech_text: this.props.speechText,
+            and_count: this.props.wordCount.ands,
+            like_count: this.props.wordCount.likes,
+            in_time: this.state.in_time,
+            status: true,
+            user_id: this.props.speech.user_id
+        }});
         this.props.history.push(`/`);
     }
 
@@ -111,7 +130,7 @@ class HistoryPage extends Component {
                             speech_eval={this.props.speech.speech_eval} 
                             speech_id={this.props.speech.id}
                             user_id={this.props.speech.user_id}/>
-                            <button>End Review</button>
+                            <button onClick={this.endReview}>End Review</button>
                         </div>
                     </section>
             </div>

@@ -11,6 +11,7 @@ import addSpeechSaga from './addSpeechSaga';
 import deleteSpeechSaga from './deleteSpeechSaga';
 import changeSpeechTypeSaga from './changeSpeechTypeSaga';
 import addEvalSaga from './addEvalSaga';
+import addReviewSaga from './addReviewSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -31,5 +32,6 @@ export default function* rootSaga() {
     deleteSpeechSaga(),
     changeSpeechTypeSaga(),
     addEvalSaga(),
+    addReviewSaga(),
   ]);
 }

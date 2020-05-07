@@ -4,7 +4,8 @@ const router = express.Router();
 
 /**
  * GET route uses SELECT SQL
- * all speech specific to one user
+ * all speech specific to one user that aren't finished
+ * based off the status field being false
  */
 //Route for all the speech sp
 router.get('/user', (req, res) => {
@@ -27,7 +28,31 @@ router.get('/user', (req, res) => {
 
 /**
  * GET route uses SELECT SQL
- * all speech specific to one user
+ * all speech specific to one user that are finished
+ * based off the status field being true
+ */
+//Route for all the speech sp
+router.get('/user', (req, res) => {
+    console.log('query is:',req.query);
+    //query is the user id
+    let user_id = req.query.q;
+
+    // returns all speech associated with the user_id
+    const queryText = `
+                        SELECT * FROM speech_info 
+                        WHERE user_id = $1 AND status = TRUE
+                        ORDER BY id;`;
+    pool.query(queryText,[user_id]).then((result) => {
+            res.send(result.rows);
+        }).catch( (error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
+
+/**
+ * GET route uses SELECT SQL
+ * returns one speech specific to the id of the speech
  */
 //Route for all the speech sp
 router.get('/speech', (req, res) => {
@@ -153,13 +178,11 @@ router.put('/speech_type/:id', (req, res) => {
 
 /**
  * PUT route uses UPDATE SQL
- * TABLE TOPICS
+ * SPEECH EVAL
  */
 router.put('/eval/:id', (req, res) => {
-    
     let eval = req.body.speech_eval;
     let speech_id = req.params.id;
-    console.log('in update for eval', eval, speech_id);
 
     //Updates the speech_info table on the table_topics field
     const queryText = `
@@ -167,6 +190,34 @@ router.put('/eval/:id', (req, res) => {
                         SET speech_eval = $1
                         WHERE id = $2;`;
     pool.query(queryText,[eval,speech_id]).then((result) => {
+            res.sendStatus(204);
+        }).catch( (error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
+
+/**
+ * PUT route uses UPDATE SQL
+ * FINAL SPEECH UPDATES after end review is clicked
+ */
+router.put('/review/:id', (req, res) => {
+    const speech_rt = req.body.speech_rt;
+    const speech_text = req.body.speech_text;
+    const and_count = req.body.and_count;
+    const like_count = req.body.like_count;
+    const in_time = req.body.in_time;
+    const status = req.body.status
+    const speech_id = req.params.id;
+    
+
+    //Updates the speech_info table on the table_topics field
+    const queryText = `
+                        UPDATE speech_info 
+                        SET speech_rt = $1, speech_text = $2, and_count = $3,
+                        like_count = $4, in_time = $5, status = $6
+                        WHERE id = $7;`;
+    pool.query(queryText,[speech_rt, speech_text, and_count, like_count, in_time, status, speech_id]).then((result) => {
             res.sendStatus(204);
         }).catch( (error) => {
             console.log(`Error on query ${error}`);
