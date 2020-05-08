@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 //Connect to the redux store
 import { connect } from 'react-redux';
 
+//used to help change pages
+import { withRouter } from 'react-router-dom';
+
 //Import Individual Components to use on this page;
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -11,6 +14,10 @@ import DeleteSpeech from '../Buttons/DeleteSpeech';
 class HistoryPage extends Component {
   componentDidMount() {
     this.props.dispatch({type: 'FETCH_FINISHED_SPEECHES', payload: this.props.user_id});
+  }
+
+  viewDetails = (speech_id) => {
+    this.props.history.push(`/details?q=${speech_id}`);
   }
 
   render () {
@@ -31,7 +38,7 @@ class HistoryPage extends Component {
               return(
                 <tr key={speech.id}>
                   <td>{speech.speech_title}</td>
-                  <td><button>View Details</button></td>
+                  <td><button onClick={() => this.viewDetails(speech.id)}>View Details</button></td>
                   <td><DeleteSpeech speech_id={speech.id} user_id={speech.user_id}/></td>
                 </tr>
               );
@@ -51,4 +58,4 @@ const mapStateToProps = reduxState => ({
   speeches: reduxState.finisheSpeech
 });
 
-export default connect(mapStateToProps)(HistoryPage);
+export default withRouter(connect(mapStateToProps)(HistoryPage));
