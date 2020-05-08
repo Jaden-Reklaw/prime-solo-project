@@ -32,12 +32,12 @@ router.get('/user', (req, res) => {
  * based off the status field being true
  */
 //Route for all the speech sp
-router.get('/user', (req, res) => {
-    console.log('query is:',req.query);
+router.get('/finished/user', (req, res) => {
+    console.log('finished query is:',req.query);
     //query is the user id
     let user_id = req.query.q;
 
-    // returns all speech associated with the user_id
+    //returns all speech associated with the user_id
     const queryText = `
                         SELECT * FROM speech_info 
                         WHERE user_id = $1 AND status = TRUE

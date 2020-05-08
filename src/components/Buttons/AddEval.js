@@ -33,7 +33,7 @@ class AddEval extends Component {
         {this.state.isOpen ? (
           <div className="modal">
             <div className="modal_content">
-              <h2>Speech Evaluation</h2>
+              <h1>Speech Evaluation</h1>
               <hr />
               <article>
                   <textarea 

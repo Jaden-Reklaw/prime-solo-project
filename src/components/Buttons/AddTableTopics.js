@@ -33,7 +33,7 @@ class AddTableTopics extends Component {
         {this.state.isOpen ? (
           <div className="modal">
             <div className="modal_content">
-              <h2>Table Topics</h2>
+              <h1>Table Topics</h1>
               <hr />
               <article>
                   <textarea 

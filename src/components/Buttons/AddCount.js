@@ -36,7 +36,7 @@ class AddCount extends Component {
         {this.state.isOpen ? (
           <div className="modal">
             <div className="modal_content">
-              <h2>Change Counts</h2>
+              <h1>Change Counts</h1>
               <hr />
               <form>
                 <label htmlFor="likes">Likes Count:</label>

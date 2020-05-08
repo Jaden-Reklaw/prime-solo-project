@@ -33,7 +33,7 @@ class AddNotes extends Component {
         {this.state.isOpen ? (
           <div className="modal">
             <div className="modal_content">
-              <h2>Notes</h2>
+              <h1>Notes</h1>
               <hr />
               <article>
                   <textarea 
