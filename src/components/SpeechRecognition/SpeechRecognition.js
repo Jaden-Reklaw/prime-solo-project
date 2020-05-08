@@ -106,7 +106,7 @@ class Dictaphone extends Component {
   render() {
     return (
       <div>
-        <div className='top-heading'>
+        <div className='top-heading control'>
 
           <h3>Speech Controls</h3>
           <h4 className="timer">{this.getMinutes()}:{this.getSeconds()}</h4>

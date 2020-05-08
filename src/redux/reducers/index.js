@@ -9,6 +9,7 @@ import speech from './oneSpeechReducer';
 import speechText from './speechTextReducer';
 import wordCount from './counterReducer';
 import time from './timeReducer';
+import finisheSpeech from './finishedSpeechReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   speechText,
   wordCount,
   time,
+  finisheSpeech,
 });
 
 export default rootReducer;

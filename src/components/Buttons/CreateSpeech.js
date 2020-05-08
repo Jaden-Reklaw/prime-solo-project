@@ -45,7 +45,7 @@ class CreateSpeech extends Component {
         {this.state.isOpen ? (
           <div className="modal">
             <div className="modal_content">
-              <h2>Create New Speech</h2>
+              <h1>Create New Speech</h1>
               <hr />
               <form>
                 <label htmlFor="speech_title">Speech Title:</label>

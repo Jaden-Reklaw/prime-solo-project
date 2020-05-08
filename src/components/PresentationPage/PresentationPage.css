@@ -5,7 +5,7 @@
 
 .presentation-wrapper {
     display: grid;
-    grid-template-columns: 33.3% 33.3% auto;
+    grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
 /* Top part of the Presentation Page outside of Scrolls */

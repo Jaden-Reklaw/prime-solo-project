@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import './modal.css';
 
 
-class AddTableTopics extends Component {
+class AddEval extends Component {
   state = {
     isOpen: false,
-    table_topics: this.props.table_topics
+    speech_eval: this.props.speech_eval
   }
 
   setIsOpen = () => {
@@ -15,13 +15,13 @@ class AddTableTopics extends Component {
 
   handleChangeFor = (event) => {
       this.setState({
-        table_topics: event.target.value
+        speech_eval: event.target.value
       });
   }
 
   handleSubmit = () => {
-    //Sends a dispatch to update the table topics that were added.
-    this.props.dispatch({type: 'PUT_TABLE_TOPICS', payload: {id:this.props.speech_id, table_topics: this.state.table_topics, user_id: this.props.user_id}});
+    //Sends a dispatch to update the speech_eval that were added.
+    this.props.dispatch({type: 'PUT_EVAL', payload: {id:this.props.speech_id, speech_eval: this.state.speech_eval, user_id: this.props.user_id}});
     //Closes the modal once you hit save;
     this.setIsOpen();
   }
@@ -29,16 +29,16 @@ class AddTableTopics extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.setIsOpen()}>Add Table Topics</button>
+        <button onClick={() => this.setIsOpen()}>Add Evaluation</button>
         {this.state.isOpen ? (
           <div className="modal">
             <div className="modal_content">
-              <h1>Table Topics</h1>
+              <h1>Speech Evaluation</h1>
               <hr />
               <article>
                   <textarea 
                   spellCheck="true"
-                  value={this.state.table_topics || ''} 
+                  value={this.state.speech_eval || ''} 
                   onChange={(event) => this.handleChangeFor(event)}></textarea>
               </article>
               <button onClick={this.handleSubmit}>Save</button>
@@ -51,5 +51,4 @@ class AddTableTopics extends Component {
   }
 }
 
-
-export default connect()(AddTableTopics);
+export default connect()(AddEval);
