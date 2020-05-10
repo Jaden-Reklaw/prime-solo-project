@@ -24,27 +24,29 @@ class HistoryPage extends Component {
     return (
       <div>
         <Nav />
-        <h1>Speech History</h1>
-        <table className="history-table">
-          <thead>
-            <tr>
-              <th>Speech Name</th>
-              <th>Details</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.speeches.map((speech) => {
-              return(
-                <tr key={speech.id}>
-                  <td>{speech.speech_title}</td>
-                  <td><button onClick={() => this.viewDetails(speech.id)}>View Details</button></td>
-                  <td><DeleteSpeech speech_id={speech.id} user_id={speech.user_id}/></td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <section>
+          <h1>Speech History</h1>
+          <table className="primeTable">
+            <thead>
+              <tr>
+                <th>Speech Name</th>
+                <th>Details</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.speeches.map((speech) => {
+                return(
+                  <tr key={speech.id}>
+                    <td>{speech.speech_title}</td>
+                    <td><button onClick={() => this.viewDetails(speech.id)}>View Details</button></td>
+                    <td><DeleteSpeech speech_id={speech.id} user_id={speech.user_id}/></td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </section>
         <Footer />
       </div>
     );

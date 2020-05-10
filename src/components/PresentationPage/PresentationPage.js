@@ -50,7 +50,7 @@ class PresentationPage extends Component {
                             <h3>Speech Notes:</h3>
                         </div>
                         <Scroll>
-                            <pre>{this.props.speech.notes}</pre>
+                            <pre className="notes-section">{this.props.speech.notes}</pre>
                         </Scroll>
                     </div>
                 </section>
