@@ -123,6 +123,11 @@ input[type=submit]:hover {
     width: 100%;
 }
 
+.history-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
 th, td {
     text-align: left;
     padding: 8px;

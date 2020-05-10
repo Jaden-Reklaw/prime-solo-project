@@ -9,6 +9,7 @@ function* removeSpeechSaga(action){
         yield axios.delete(`/api/speech/delete/${action.payload.speech_id}`);
         //Request information back from the server after change
         yield put({type: 'FETCH_SPEECH', payload: action.payload.user_id});
+        yield put({type: 'FETCH_FINISHED_SPEECHES', payload: action.payload.user_id});
     } catch(error) {
         console.log('error with put request for adding notes', error);
     }
