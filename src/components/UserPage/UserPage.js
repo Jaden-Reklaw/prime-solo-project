@@ -15,7 +15,8 @@ const UserPage = (props) => (
     <Nav />
     <section>
     <h1 id="welcome">Welcome, { props.user.username }!</h1>
-    <p>Current Speeches: {props.speeches.length}</p>
+    <h2>Current Speeches: {props.speeches.length}</h2>
+    <h2>Finished Speeches: {props.finishedSpeech.length}</h2>
     <CreateSpeech user_id={props.user.id}/>
     </section>
     
@@ -36,7 +37,8 @@ const UserPage = (props) => (
         <SpeechList />
       </table>
     </section>
-    <Footer />
+    <div className="buffer"></div>
+    <Footer className="footer"/>
   </div>
 );
 
@@ -45,7 +47,8 @@ const UserPage = (props) => (
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = reduxState => ({
   user: reduxState.user,
-  speeches: reduxState.speeches
+  speeches: reduxState.speeches,
+  finishedSpeech: reduxState.finishedSpeech,
 });
 
 // this allows us to use <App /> in index.js

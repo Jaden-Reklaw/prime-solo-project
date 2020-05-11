@@ -47,6 +47,7 @@ class HistoryPage extends Component {
             </tbody>
           </table>
         </section>
+        <div className="buffer"></div>
         <Footer />
       </div>
     );
@@ -57,7 +58,7 @@ class HistoryPage extends Component {
 //Set props to this component from redux store
 const mapStateToProps = reduxState => ({
   user_id: reduxState.user.id,
-  speeches: reduxState.finisheSpeech
+  speeches: reduxState.finishedSpeech
 });
 
 export default withRouter(connect(mapStateToProps)(HistoryPage));

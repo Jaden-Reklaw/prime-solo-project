@@ -17,12 +17,12 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 //         res.sendStatus(403);
 //     }
 // });
+
 /**
  * GET route uses SELECT SQL
  * all speech specific to one user that aren't finished
  * based off the status field being false
  */
-//Route for all the speech sp
 router.get('/user', (req, res) => {
     console.log('query is:',req.query);
     //query is the user id

@@ -22,7 +22,7 @@ section {
 
 /* Styling for Background Images for Login and Registration Pages */
 .backgroundImageLogin {
-    height: 80vh;
+    height: 90vh;
     background-image: url("https://virtualspeech.com/img/blog/good_posture.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -31,7 +31,7 @@ section {
 }
 
 .backgroundImageReg {
-    height: 80vh;
+    height: 90vh;
     background-image: url("https://freakonomics.com/wp-content/uploads/2016/08/PC-waiting--550x372.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -195,4 +195,9 @@ table.primeTable {
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word; 
+  }
+
+/* Created to fix issue with footer margin collapsing */
+  .buffer {
+    height: 10rem;
   }

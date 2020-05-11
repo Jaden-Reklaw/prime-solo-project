@@ -35,57 +35,59 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="backgroundImageLogin">
+      <div>
         <Nav />
-        {this.props.errors.loginMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
-            {this.props.errors.loginMessage}
-          </h2>
-        )}
-        <form onSubmit={this.login}>
-          <img src="" alt=""/>
-          <h1>Speech2Me</h1>
-          <h5>Account Details</h5>
-          <div>
+        <div className="backgroundImageLogin">
+          {this.props.errors.loginMessage && (
+            <h2
+              className="alert"
+              role="alert"
+            >
+              {this.props.errors.loginMessage}
+            </h2>
+          )}
+          <form onSubmit={this.login}>
+            <img src="" alt=""/>
+            <h1>Speech2Me</h1>
+            <h5>Account Details</h5>
+            <div>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={this.state.username}
+                  onChange={this.handleInputChangeFor('username')}
+                />
+            </div>
+            <div>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.handleInputChangeFor('password')}
+                />
+            </div>
+            <div>
               <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
+                className="log-in"
+                type="submit"
+                name="submit"
+                value="Log In"
               />
-          </div>
-          <div>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-          </div>
-          <div>
-            <input
-              className="log-in"
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
-          </div>
-        </form>
-        <center>
-          <span className="questionSpan">Don't Have an account? </span>
-          <button
-            type="button"
-            className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
-          >
-            Join Speech2Me!
-          </button>
-        </center>
+            </div>
+          </form>
+          <center>
+            <span className="questionSpan">Don't Have an account? </span>
+            <button
+              type="button"
+              className="link-button"
+              onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
+            >
+              Join Speech2Me!
+            </button>
+          </center>
+        </div>
         <Footer />
       </div>
     );

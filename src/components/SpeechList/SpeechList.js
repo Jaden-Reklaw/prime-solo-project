@@ -22,6 +22,7 @@ class SpeechList extends Component {
     componentDidMount() {
       // use component did mount to dispatch an action to request the speechList from the API
       this.props.dispatch({type: 'FETCH_SPEECH', payload: this.props.user.id});
+      this.props.dispatch({type: 'FETCH_FINISHED_SPEECHES', payload: this.props.user.id});
     }
 
     handleClick = (speech_id) => {
