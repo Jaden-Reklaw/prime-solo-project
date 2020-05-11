@@ -53,7 +53,9 @@ class SpeechList extends Component {
                 user_id={speech.user_id}/>
               </td>
               <td>{speech.min_time} to {speech.max_time}</td>
-              <td><button onClick={() => this.handleClick(speech.id)}>Start Presentation</button></td>
+              <td><button 
+              className="button center"
+              onClick={() => this.handleClick(speech.id)}>Start Presentation</button></td>
               <td><DeleteSpeech 
               speech_id={speech.id}
               user_id={speech.user_id}/>

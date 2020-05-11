@@ -31,7 +31,7 @@ class PresentationPage extends Component {
     render() {
         return (
             <div className="presentation-page">
-                <h1>Presentater: {this.props.user.first_name}</h1>
+                <h1>Speaker: {this.props.user.first_name}</h1>
                 <h2>Title: {this.props.speech.speech_title}</h2>
                 <section className="presentation-wrapper">
                     <div>

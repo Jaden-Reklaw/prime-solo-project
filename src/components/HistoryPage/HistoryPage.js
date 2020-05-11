@@ -39,7 +39,7 @@ class HistoryPage extends Component {
                 return(
                   <tr key={speech.id}>
                     <td>{speech.speech_title}</td>
-                    <td><button onClick={() => this.viewDetails(speech.id)}>View Details</button></td>
+                    <td><button className="button center" onClick={() => this.viewDetails(speech.id)}>View Details</button></td>
                     <td><DeleteSpeech speech_id={speech.id} user_id={speech.user_id}/></td>
                   </tr>
                 );

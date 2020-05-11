@@ -41,7 +41,9 @@ class CreateSpeech extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.setIsOpen()}>Create New Speech</button>
+        <button 
+        className="button2"
+        onClick={() => this.setIsOpen()}>Create New Speech</button>
         {this.state.isOpen ? (
           <div className="modal">
             <div className="modal_content">

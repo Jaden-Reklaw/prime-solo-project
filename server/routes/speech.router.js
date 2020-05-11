@@ -1,7 +1,22 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+//You need to go back and use rejectUnathenticated in all your routes example
+// router.get('/', rejectUnauthenticated, (req, res) => {
+//     console.log('req.user:', req.user);
+//     if (req.isAuthenticated()) {
+//         pool.query('SELECT * FROM item WHERE item.user_id = $1;', [req.user.id])
+//             .then(results => res.send(results.rows))
+//             .catch(error => {
+//                 console.log('Error making SELECT for items:', error);
+//                 res.sendStatus(500);
+//             });
+//     } else {
+//         res.sendStatus(403);
+//     }
+// });
 /**
  * GET route uses SELECT SQL
  * all speech specific to one user that aren't finished
