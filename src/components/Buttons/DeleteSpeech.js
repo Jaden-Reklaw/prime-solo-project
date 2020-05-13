@@ -9,7 +9,9 @@ class DeleteSpeech extends Component {
 
   render() {
     return (
-      <button onClick={this.handleDelete}><i className="fa fa-trash-o"></i></button>
+      <button
+      className="button center" 
+      onClick={this.handleDelete}><i className="fa fa-trash-o"></i></button>
     );
   }
 }

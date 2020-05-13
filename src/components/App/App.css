@@ -16,9 +16,13 @@ h5 {
     margin: 0 auto;
 }
 
+section {
+    margin: 12px;
+}
+
 /* Styling for Background Images for Login and Registration Pages */
 .backgroundImageLogin {
-    height: 80vh;
+    height: 90vh;
     background-image: url("https://virtualspeech.com/img/blog/good_posture.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -27,7 +31,7 @@ h5 {
 }
 
 .backgroundImageReg {
-    height: 80vh;
+    height: 90vh;
     background-image: url("https://freakonomics.com/wp-content/uploads/2016/08/PC-waiting--550x372.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -52,6 +56,7 @@ input[type=text], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
 input[type=number], select {
     width: 100%;
     padding: 12px 20px;
@@ -81,6 +86,40 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.button {
+    width: 50%;
+    background-color: #00acb0;
+    color: white;
+    padding: 4px 10px;
+    margin: 8px auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button2 {
+    width: 15vw;
+    background-color: #00acb0;
+    color: white;
+    padding: 8px 20px;
+    margin: 8px auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: large;
+    float: right;
+}
+
+.button:hover, .button2:hover {
+    background-color: #008183;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 input[type=submit]:hover {
@@ -118,25 +157,47 @@ input[type=submit]:hover {
 }
 
 /* Table Styling */
-.home-table {
-    border-collapse: collapse;
+table.primeTable {
+    font-family: Georgia, serif;
+    border: 1px solid #1C6EA4;
+    background-color: #EEEEEE;
     width: 100%;
-}
-
-.history-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
     text-align: left;
-    padding: 8px;
-}
+    border-collapse: collapse;
+  }
+  table.primeTable td, table.primeTable th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+  }
+  table.primeTable tbody td {
+    font-size: 13px;
+  }
+  table.primeTable thead {
+    background: #006368;
+    background: -moz-linear-gradient(top, #408a8e 0%, #197277 66%, #006368 100%);
+    background: -webkit-linear-gradient(top, #408a8e 0%, #197277 66%, #006368 100%);
+    background: linear-gradient(to bottom, #408a8e 0%, #197277 66%, #006368 100%);
+    border-bottom: 2px solid #444444;
+  }
+  table.primeTable thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #008086;
+  }
+  table.primeTable thead th:first-child {
+    border-left: none;
+  }
 
-th {
-    background-color: blue;
-}
+  pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word; 
+  }
 
-tr:nth-child(odd) {
-    background-color: grey;
-}
+/* Created to fix issue with footer margin collapsing */
+  .buffer {
+    height: 10rem;
+  }

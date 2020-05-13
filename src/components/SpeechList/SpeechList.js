@@ -22,6 +22,7 @@ class SpeechList extends Component {
     componentDidMount() {
       // use component did mount to dispatch an action to request the speechList from the API
       this.props.dispatch({type: 'FETCH_SPEECH', payload: this.props.user.id});
+      this.props.dispatch({type: 'FETCH_FINISHED_SPEECHES', payload: this.props.user.id});
     }
 
     handleClick = (speech_id) => {
@@ -53,7 +54,9 @@ class SpeechList extends Component {
                 user_id={speech.user_id}/>
               </td>
               <td>{speech.min_time} to {speech.max_time}</td>
-              <td><button onClick={() => this.handleClick(speech.id)}>Start Presentation</button></td>
+              <td><button 
+              className="button center"
+              onClick={() => this.handleClick(speech.id)}>Start Presentation</button></td>
               <td><DeleteSpeech 
               speech_id={speech.id}
               user_id={speech.user_id}/>

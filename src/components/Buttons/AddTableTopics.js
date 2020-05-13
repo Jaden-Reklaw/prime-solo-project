@@ -29,7 +29,9 @@ class AddTableTopics extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.setIsOpen()}>Add Table Topics</button>
+        <button
+        className="button center" 
+        onClick={() => this.setIsOpen()}>Add Table Topics</button>
         {this.state.isOpen ? (
           <div className="modal">
             <div className="modal_content">
