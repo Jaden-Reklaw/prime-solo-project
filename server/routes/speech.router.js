@@ -89,21 +89,25 @@ router.get('/speech', rejectUnauthenticated, (req, res) => {
  * POST route uses INSERT INTO
  */
 router.post('/new_speech', rejectUnauthenticated, (req, res) => {
-    const user_id = req.body.user_id;
-    const speech_title = req.body.newSpeech.speech_title;
-    const min_time = req.body.newSpeech.min_time;
-    const max_time = req.body.newSpeech.max_time;
+    if(req.isAuthenticated()) {
+        const user_id = req.body.user_id;
+        const speech_title = req.body.newSpeech.speech_title;
+        const min_time = req.body.newSpeech.min_time;
+        const max_time = req.body.newSpeech.max_time;
 
-    //Add new speech to the speech_info table
-    const queryText = `
-                        INSERT INTO speech_info(speech_title, user_id, min_time, max_time) VALUES
-                        ($1, $2, $3, $4);`;
-    pool.query(queryText,[speech_title, user_id, min_time, max_time]).then((result) => {
-            res.sendStatus(201);
-        }).catch( (error) => {
-            console.log(`Error on query ${error}`);
-            res.sendStatus(500);
-        });
+        //Add new speech to the speech_info table
+        const queryText = `
+                            INSERT INTO speech_info(speech_title, user_id, min_time, max_time) VALUES
+                            ($1, $2, $3, $4);`;
+        pool.query(queryText,[speech_title, user_id, min_time, max_time]).then((result) => {
+                res.sendStatus(201);
+            }).catch( (error) => {
+                console.log(`Error on query ${error}`);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403);
+    }
 
 });
 
