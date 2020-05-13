@@ -3,42 +3,30 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-//You need to go back and use rejectUnathenticated in all your routes example
-// router.get('/', rejectUnauthenticated, (req, res) => {
-//     console.log('req.user:', req.user);
-//     if (req.isAuthenticated()) {
-//         pool.query('SELECT * FROM item WHERE item.user_id = $1;', [req.user.id])
-//             .then(results => res.send(results.rows))
-//             .catch(error => {
-//                 console.log('Error making SELECT for items:', error);
-//                 res.sendStatus(500);
-//             });
-//     } else {
-//         res.sendStatus(403);
-//     }
-// });
-
 /**
  * GET route uses SELECT SQL
  * all speech specific to one user that aren't finished
  * based off the status field being false
  */
-router.get('/user', (req, res) => {
-    console.log('query is:',req.query);
-    //query is the user id
-    let user_id = req.query.q;
-
-    // returns all speech associated with the user_id
-    const queryText = `
-                        SELECT * FROM speech_info 
-                        WHERE user_id = $1 AND status = FALSE
-                        ORDER BY id;`;
-    pool.query(queryText,[user_id]).then((result) => {
-            res.send(result.rows);
-        }).catch( (error) => {
-            console.log(`Error on query ${error}`);
-            res.sendStatus(500);
-        });
+router.get('/user', rejectUnauthenticated, (req, res) => {
+    if(req.isAuthenticated()) {
+        console.log('query is:',req.query);
+        //query is the user id
+        let user_id = req.query.q;
+        // returns all speech associated with the user_id
+        const queryText = `
+                            SELECT * FROM speech_info 
+                            WHERE user_id = $1 AND status = FALSE
+                            ORDER BY id;`;
+        pool.query(queryText,[user_id]).then((result) => {
+                res.send(result.rows);
+            }).catch( (error) => {
+                console.log(`Error on query ${error}`);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 /**
@@ -47,22 +35,26 @@ router.get('/user', (req, res) => {
  * based off the status field being true
  */
 //Route for all the speech sp
-router.get('/finished/user', (req, res) => {
-    console.log('finished query is:',req.query);
-    //query is the user id
-    let user_id = req.query.q;
+router.get('/finished/user', rejectUnauthenticated, (req, res) => {
+    if(req.isAuthenticated()) {
+        console.log('finished query is:',req.query);
+        //query is the user id
+        let user_id = req.query.q;
 
-    //returns all speech associated with the user_id
-    const queryText = `
-                        SELECT * FROM speech_info 
-                        WHERE user_id = $1 AND status = TRUE
-                        ORDER BY id;`;
-    pool.query(queryText,[user_id]).then((result) => {
-            res.send(result.rows);
-        }).catch( (error) => {
-            console.log(`Error on query ${error}`);
-            res.sendStatus(500);
-        });
+        //returns all speech associated with the user_id
+        const queryText = `
+                            SELECT * FROM speech_info 
+                            WHERE user_id = $1 AND status = TRUE
+                            ORDER BY id;`;
+        pool.query(queryText,[user_id]).then((result) => {
+                res.send(result.rows);
+            }).catch( (error) => {
+                console.log(`Error on query ${error}`);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 /**
@@ -70,21 +62,25 @@ router.get('/finished/user', (req, res) => {
  * returns one speech specific to the id of the speech
  */
 //Route for all the speech sp
-router.get('/speech', (req, res) => {
-    console.log('query is:',req.query);
-    //query is the user id
-    let speech_id = req.query.q;
+router.get('/speech', rejectUnauthenticated, (req, res) => {
+    if(req.isAuthenticated()) {
+        console.log('query is:',req.query);
+        //query is the user id
+        let speech_id = req.query.q;
 
-    // returns one speech associated with speech_info id
-    const queryText = `
-                        SELECT * FROM speech_info 
-                        WHERE id = $1`;
-    pool.query(queryText,[speech_id]).then((result) => {
-            res.send(result.rows[0]);
-        }).catch( (error) => {
-            console.log(`Error on query ${error}`);
-            res.sendStatus(500);
-        });
+        // returns one speech associated with speech_info id
+        const queryText = `
+                            SELECT * FROM speech_info 
+                            WHERE id = $1`;
+        pool.query(queryText,[speech_id]).then((result) => {
+                res.send(result.rows[0]);
+            }).catch( (error) => {
+                console.log(`Error on query ${error}`);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 
@@ -92,7 +88,7 @@ router.get('/speech', (req, res) => {
 /**
  * POST route uses INSERT INTO
  */
-router.post('/new_speech', (req, res) => {
+router.post('/new_speech', rejectUnauthenticated, (req, res) => {
     const user_id = req.body.user_id;
     const speech_title = req.body.newSpeech.speech_title;
     const min_time = req.body.newSpeech.min_time;
