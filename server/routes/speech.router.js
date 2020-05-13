@@ -114,18 +114,22 @@ router.post('/new_speech', rejectUnauthenticated, (req, res) => {
 /**
  * DELETE route uses DELETE SQL
  */
-router.delete('/delete/:id', (req, res) => {
-    let speech_id = req.params.id;
-    console.log('speech id is', speech_id);
+router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
+    if(req.isAuthenticated()) {
+        let speech_id = req.params.id;
+        console.log('speech id is', speech_id);
 
-    //Deletes a speech from the speech_info table
-    const queryText = `DELETE FROM speech_info WHERE id = $1;`;
-    pool.query(queryText,[speech_id]).then((result) => {
-            res.sendStatus(202);
-        }).catch( (error) => {
-            console.log(`Error on query ${error}`);
-            res.sendStatus(500);
-        });
+        //Deletes a speech from the speech_info table
+        const queryText = `DELETE FROM speech_info WHERE id = $1;`;
+        pool.query(queryText,[speech_id]).then((result) => {
+                res.sendStatus(202);
+            }).catch( (error) => {
+                console.log(`Error on query ${error}`);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 /**
