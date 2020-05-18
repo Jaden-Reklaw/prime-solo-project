@@ -1,13 +1,16 @@
-# Prime Project
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+# PROJECT NAME
+	Speech2Me
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+## Description
+_Duration: 2 Weeks_
 
-## Download (Don't Clone) This Repository
+The Speech2Me app is a web application that will allow users to practice their speeches on their own as well as present to a group. This app allows users to create speeches and record all the dialog stated using the NPM speech to text recognition API. 
 
-* Don't Fork or Clone. Instead, click the `Clone or Download` button and select `Download Zip`.
-* Unzip the project and start with the code in that folder.
-* Create a new GitHub project and push this code to the new repository.
+A user has the ability to set a goal for the time to complete their speech, create notes to see on the side while they are presenting, create table topics for items to discuss, and select the type of speech they are giving. Upon creation of the speech a user will then be able to click a start button that will record their speech and once finished go to a feedback session that will tell them their stats for the speech. 
+
+Did the speaker finish in the allotted time? It will also have a counter for the number of times users say certain keywords for example “likes” and “ands”. The user may also submit feedback on how they felt about the speech by clicking on the evaluate button. After a user is satisfied with the speech feedback they may then submit the speech as completed by clicking on the end review section that will save all their speeches to a history page. Users will be able to click on each speech in order to get the stats of all the speeches.
+
+To see the fully functional website, please visit: [Speech2Me](https://fathomless-basin-20031.herokuapp.com/)
 
 ## Prerequisites
 
@@ -19,17 +22,8 @@ Before you get started, make sure you have the following software installed on y
 
 ## Create database and table
 
-Create a new database called `prime_app` and create a `user` table:
-
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
-
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+- Create a new database called `prime_app`
+- Copy and run the sql commands in Postico from the `database.sql` file
 
 ## Development Setup Instructions
 
@@ -44,72 +38,33 @@ If you would like to name your database something else, you will need to change 
 * Run `npm run client`
 * Navigate to `localhost:3000`
 
-## Debugging
+## Usage
+1. First click on the Join Speech2Me link and create a user by filling out the form
+2. You will automatically be logged in
+3. Create a speech by clicking on the 'Create New Speech' Button(Title, Min Time and Max Time)
+4. Prep for speech by creating notes for your speech by click on on the 'Add Notes' button. This will take you to a textarea field where you can type as many notes as you like.
+5. Create table topics that will be discussed at the end of your speech. Its the same process as adding notes but you'll click on the 'Add Table Topics' button.
+6. Add a speech type by click on the speech dropdown.
+7. You can then click start speech and go to the presentation page
+8. Presentation page has three panes. Left pane shows a word count and will increase as you say the keywords in your speech. Right pane has the notes you created in the notes section to help you during your speech. The center pane is the magic pane that is connected to the speech to text api and has the controls.
+9. Controls for the speech. Record starts the api for speech to text and timer. Pause Stops the recording and timer but keeps the transcript. Submit transcript will stop recording and timer an after a 3 sec delay take you to the review page. Cancel Speech will stop the recording and timer then goes back to the home page.
+10. Review page show you all the information about the speech including speech content(what was said), speech notes, speech table topics, word count for filler words, speech run time shows the time the speech took and if the speaker finished in the time specified, and the speech type.
+11. The review page controls allows the speaker to reset the speech back to the beginning to do over,change count allows you to adjust the filler words in case a word was used properly, add evaluation also either the speaker or some one who heard the speech to evaluate the speech and end review submits the speech to history page.
+12. History page will show the user their completed speeches with all the data from that speech.
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
+## Built With
+- HTML
+- CSS
+- Javascript
+- Node.js
+- Express.js
+- PostgreSQL
+- React.js
+- React Redux
+- React Sagas
+- React Router
+- React Logger
+- Passports
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
-
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
-
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
-
-
-## Testing Routes with Postman
-
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum. 
-
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
-
-1. Start the server - `npm run server`
-2. [Import the sample routes JSON file](./PostmanPrimeSoloRoutes.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-    1. `POST /api/user/register` registers a new user, see body to change username/password
-    2. `POST /api/user/login` will login a user, see body to change username/password
-    3. `GET /api/user` will get user information, by default it's not very much
-
-After running the login route above, you can try any other route you've created that requires a logged in user!
-
-
-## Production Build
-
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
-
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm start`
-* Navigate to `localhost:5000`
-
-## Lay of the Land
-
-* `src/` contains the React application
-* `public/` contains static assets for the client-side
-* `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-* `server/` contains the Express App
-
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
-* src/components
-  * App/App
-  * Footer/Footer
-  * Nav/Nav
-  * AboutPage/AboutPage
-  * InfoPage/InfoPage
-  * UserPage/UserPage
-  * LoginPage/LoginPage
-  * RegisterPage/RegisterPage
-  * LogOutButton/LogOutButton
-  * ProtectedRoute/ProtectedRoute
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+## Acknowledgement
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. Special shout out to my instructors Mary and Kris for helping become the programmer I always dreamed of and to my cohort at Prime Dijkstra!! Woot Woot, Help for Life!
